@@ -1,0 +1,75 @@
+use-grammars = { only = [ "rust", "ruby", "typescript", "tsx", "typescript-language-server", "kotlin", "ruby", "python", "typescript-deno", "svelte"] }
+
+[[language]]
+name="typescript-deno"
+scope="source.ds"
+file-types = ["ds", "dsx"]
+language-server = { command = "deno", args = ["lsp"] }
+formatter = { command = "deno" , args = ["fmt"] }
+roots=[""]
+
+[[language]]
+name="python"
+# language-server = { command = "pyright", args = ["--stdio"] }
+# formatter = { command = "pyright" , args = ["--stdin"] }
+language-server = { command = "pyright-langserver", args = ["--stdio"] }
+config = {}
+
+[[language]]
+name="ruby"
+config = { solargraph = { diagnostics = true, formatting = true } }
+
+[[language]]
+name="kotlin"
+language-server = { command = "kotlin-language-server" }
+
+[[language]]
+name = "rust"
+language-server = { command = "rust-analyzer" }
+diagnostic-severity = "Hint"
+
+[[language]]
+name = "typescript"
+scope = "source.ts"
+file-types = ["ts"]
+roots = []
+language-server = { command = "typescript-language-server", args = ["--stdio"], language-id = "typescript" }
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+indent = { tab-width = 2, unit = "  " }
+diagnostic-severity = "Hint"
+
+[[language]]
+name = "tsx"
+scope = "source.tsx"
+file-types = ["tsx"]
+roots = []
+language-server = { command = "typescript-language-server", args = ["--stdio"], language-id = "typescriptreact" }
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "javascript"
+scope = "source.js"
+file-types = ["js", "mjs", "cjs"]
+shebangs = ["node"]
+roots = []
+comment-token = "//"
+language-server = { command = "typescript-language-server", args = ["--stdio"], language-id = "javascript" }
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "jsx"
+scope = "source.jsx"
+file-types = ["jsx"]
+roots = []
+comment-token = "//"
+language-server = { command = "typescript-language-server", args = ["--stdio"], language-id = "javascriptreact" }
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+indent = { tab-width = 2, unit = "  " }
+grammar = "javascript"
+
+[[language]]
+name = "c"
+file-types = ["c"]
+indent = { tab-width = 4, unit = "  " }
