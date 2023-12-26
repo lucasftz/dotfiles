@@ -1,75 +1,52 @@
-use-grammars = { only = [ "rust", "ruby", "typescript", "tsx", "typescript-language-server", "kotlin", "ruby", "python", "typescript-deno", "svelte"] }
-
 [[language]]
-name="typescript-deno"
-scope="source.ds"
-file-types = ["ds", "dsx"]
-language-server = { command = "deno", args = ["lsp"] }
-formatter = { command = "deno" , args = ["fmt"] }
-roots=[""]
+name = "tsx"
+scope = "scope.ts"
+roots = ["tsconfig.ts"]
+file-types = ["tsx"]
+language-servers = ["typescript-language-server", "tailwindcss-react", "vscode-eslint-language-server"]
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
 
-[[language]]
-name="python"
-# language-server = { command = "pyright", args = ["--stdio"] }
-# formatter = { command = "pyright" , args = ["--stdin"] }
-language-server = { command = "pyright-langserver", args = ["--stdio"] }
+[language-server.tailwindcss-react]
+language-id = "typescriptreact"
+command = "tailwindcss-language-server"
+args = ["--stdio"]
 config = {}
 
 [[language]]
-name="ruby"
-config = { solargraph = { diagnostics = true, formatting = true } }
+name = "python"
+language-servers = [ "pyright" ]
 
-[[language]]
-name="kotlin"
-language-server = { command = "kotlin-language-server" }
+# use-grammars = { only = [ "rust", "ruby", "javascript", "jsx", "typescript-language-server", "kotlin", "ruby", "python", "typescript-deno", "svelte"] }
 
-[[language]]
-name = "rust"
-language-server = { command = "rust-analyzer" }
-diagnostic-severity = "Hint"
+# [language-server.javscript]
+# command = "typescript-language-server"
+# args = ["--stdio"]
+# [language-server.javscriptreact]
+# command = "typescript-language-server"
+# args = ["--stdio"]
 
-[[language]]
-name = "typescript"
-scope = "source.ts"
-file-types = ["ts"]
-roots = []
-language-server = { command = "typescript-language-server", args = ["--stdio"], language-id = "typescript" }
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
-indent = { tab-width = 2, unit = "  " }
-diagnostic-severity = "Hint"
+# [[language]]
+# name = "javascript"
+# scope = "source.js"
+# roots = ["package.json"]
+# file-types = ["js", "ts"]
+# indent = { tab-width = 2, unit = " " }
+# language-id = "javascript"
 
-[[language]]
-name = "tsx"
-scope = "source.tsx"
-file-types = ["tsx"]
-roots = []
-language-server = { command = "typescript-language-server", args = ["--stdio"], language-id = "typescriptreact" }
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
-indent = { tab-width = 2, unit = "  " }
+# [[language]]
+# name = "javascriptreact"
+# scope = "source.jsx"
+# roots = ["package.json"]
+# file-types = ["jsx", "tsx"]
+# indent = { tab-width = 2, unit = " " }
+# language-id = "javascriptreact"
 
-[[language]]
-name = "javascript"
-scope = "source.js"
-file-types = ["js", "mjs", "cjs"]
-shebangs = ["node"]
-roots = []
-comment-token = "//"
-language-server = { command = "typescript-language-server", args = ["--stdio"], language-id = "javascript" }
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
-indent = { tab-width = 2, unit = "  " }
-
-[[language]]
-name = "jsx"
-scope = "source.jsx"
-file-types = ["jsx"]
-roots = []
-comment-token = "//"
-language-server = { command = "typescript-language-server", args = ["--stdio"], language-id = "javascriptreact" }
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
-indent = { tab-width = 2, unit = "  " }
-grammar = "javascript"
-
-[[language]]
-name = "c"
-file-types = ["c"]
-indent = { tab-width = 4, unit = "  " }
+# [[language]]
+# name = "tailwindcss"
+# scope = "source.css"
+# injection-regex = "(postcss|css|html|jsx|tsx)"
+# file-types = ["css", "jsx", "tsx"]
+# roots = ["tailwind.config.js","tailwind.config.cjs"]
+# language-servers = ["tailwindcss-language-server"]
+# language-servers = { command = "tailwindcss-language-server", args = ["-vvv", "--stdio"] }

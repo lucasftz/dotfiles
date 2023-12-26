@@ -1,0 +1,8 @@
+inherits = "dark_plus"
+"ui.background" = {}
+"ui.statusline" = {}
+"ui.popup" = {}
+"ui.bufferline" = {}
+"ui.bufferline.background" = {}
+"ui.bufferline.active" = { underline = { color = "white", style = "line" } }
+"ui.window" = {}

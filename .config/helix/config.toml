@@ -1,4 +1,4 @@
-theme = "dark_plus" # "dark_plus" catppuccin_frappe
+theme = "gruvbox_transparent" # "dark_plus" catppuccin_frappe
 # "diagnostic.error" = { underline = { style = "curl", color = "red" } }
 
 [editor]
