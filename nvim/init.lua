@@ -20,5 +20,5 @@ local function change_theme(theme)
     require('lualine').setup({ options = { theme = theme } })
 end
 
-change_theme("nord")
+change_theme("kanagawa-wave")
 vim.cmd([[command! -nargs=1 Theme lua require('plugins/theme').change_theme(<args>)]])

@@ -10,13 +10,14 @@ return {
         config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = {
-                    "autotools_ls",
-                    "clangd",
+                    -- "autotools_ls",
+                    -- "clangd",
                     "gopls",
                     "lua_ls",
+                    "pyright",
                     "tailwindcss",
                     "tsserver",
-                    "zls",
+                    -- "zls",
                 }
             })
         end
@@ -28,7 +29,12 @@ return {
             local lspconfig = require("lspconfig")
 
             lspconfig.autotools_ls.setup({ capabilities = capabilities })
-            lspconfig.clangd.setup({ capabilities = capabilities })
+            lspconfig.clangd.setup({
+                capabilities = capabilities,
+                -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428
+                cmd = { "clangd", "--offset-encoding=utf-16" }
+            })
+            -- lspconfig.clang_format.setup({ capabilities = capabilities })
             lspconfig.gopls.setup({
                 -- capabilities = capabilities,
                 capabilities = capabilities,
@@ -40,6 +46,7 @@ return {
                 },
             })
             lspconfig.lua_ls.setup({ capabilities = capabilities })
+            lspconfig.pyright.setup({ capabilities = capabilities })
             lspconfig.tailwindcss.setup({ capabilities = capabilities })
             lspconfig.tsserver.setup({ capabilities = capabilities })
             lspconfig.zls.setup({ capabilities = capabilities })
